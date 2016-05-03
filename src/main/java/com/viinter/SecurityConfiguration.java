@@ -1,4 +1,4 @@
-package com.erecruitment;
+package com.viinter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +15,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(SecurityConfiguration.class);
 	
-
 	
 	@Override
 	public void configure( final WebSecurity web ) throws Exception
@@ -24,9 +23,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		// is accessible from the login page without authentication
 		web
 		.ignoring()
-		.antMatchers( "/WEB-INF/jsp/**" )
-		.antMatchers("/WEB-INF/css/**")
-		.antMatchers("**/css/**");
+		.antMatchers( "/WEB-INF/views/**" );
 
 	}
 	
@@ -54,15 +51,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		.and()
 		// The intercept-url configuration is where we specify what roles are allowed access to what areas.
 		.authorizeRequests()
-		.antMatchers("/**").permitAll()
-		.and()
+		.antMatchers("/**").permitAll();
+		/*.and()
 		.formLogin().loginPage("/login")
 		.defaultSuccessUrl( "/homepage" )
 		//Handling Logout
 		.and()
-		.logout().logoutSuccessUrl("/logout"); 
+		.logout().logoutSuccessUrl("/logout"); */
 		http.csrf().disable();
 	}
+	
+	
 	
 	
 	

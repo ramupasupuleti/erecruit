@@ -1,4 +1,4 @@
-package com.erecruitment.constants;
+package com.viinter.constants;
 
 public enum Pages {
 	Registration;

@@ -1,108 +1,91 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<jsp:include page="../views/common.jsp"></jsp:include>
 </head>
 <body>
 <div class="container">
-            <form class="form-horizontal" role="form">
+            <form:form class="form-horizontal" commandName="RegistrationForm" action='/user/register' method='POST'>
                 <h2>Registration Form</h2>
                 <div class="form-group">
-                    <label for="firstName" class="col-sm-3 control-label">Full Name</label>
+                    <form:label path="firstName" for="firstName" class="col-sm-3 control-label">First Name</form:label>
                     <div class="col-sm-9">
-                        <input type="text" id="firstName" placeholder="Full Name" class="form-control" autofocus>
-                        <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span>
+                        <form:input type="text" path="firstName" placeholder="First Name" class="form-control"></form:input>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="email" class="col-sm-3 control-label">Email</label>
+                    <form:label for="lastName" path="lastName" class="col-sm-3 control-label">Last Name</form:label>
                     <div class="col-sm-9">
-                        <input type="email" id="email" placeholder="Email" class="form-control">
+                        <form:input type="text" path="lastName" id="lastName" placeholder="Last Name" class="form-control" ></form:input>
+                    </div>
+                </div>
+                  <div class="form-group">
+                    <form:label for="mobile" path="mobileNumber" class="col-sm-3 control-label">mobile</form:label>
+                    <div class="col-sm-9">
+                        <form:input type="mobile" path="mobileNumber" id="mobile" placeholder="mobile" class="form-control"></form:input>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password" class="col-sm-3 control-label">Password</label>
+                    <form:label for="email" path="email" class="col-sm-3 control-label">Email</form:label>
                     <div class="col-sm-9">
-                        <input type="password" id="password" placeholder="Password" class="form-control">
+                        <form:input type="email" path="email" id="email" placeholder="Email" class="form-control"></form:input>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="birthDate" class="col-sm-3 control-label">Date of Birth</label>
+                    <form:label for="password" path="password" class="col-sm-3 control-label">Password</form:label>
                     <div class="col-sm-9">
-                        <input type="date" id="birthDate" class="form-control">
+                        <form:input type="password" path="password" id="password" placeholder="Password" class="form-control"></form:input>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="country" class="col-sm-3 control-label">Country</label>
+                 <div class="form-group">
+                    <form:label for="confirmpassword" path="confirmPassword" class="col-sm-3 control-label">Confirm password</form:label>
                     <div class="col-sm-9">
-                        <select id="country" class="form-control">
-                            <option>Afghanistan</option>
-                            <option>Bahamas</option>
-                            <option>Cambodia</option>
-                            <option>Denmark</option>
-                            <option>Ecuador</option>
-                            <option>Fiji</option>
-                            <option>Gabon</option>
-                            <option>Haiti</option>
-                        </select>
+                        <form:input type="password" path="confirmPassword" id="password" placeholder="confirmpassword" class="form-control"></form:input>
                     </div>
-                </div> <!-- /.form-group -->
+                </div>
+                
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Gender</label>
-                    <div class="col-sm-6">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <label class="radio-inline">
-                                    <input type="radio" id="femaleRadio" value="Female">Female
-                                </label>
-                            </div>
-                            <div class="col-sm-4">
-                                <label class="radio-inline">
-                                    <input type="radio" id="maleRadio" value="Male">Male
-                                </label>
-                            </div>
-                            <div class="col-sm-4">
-                                <label class="radio-inline">
-                                    <input type="radio" id="uncknownRadio" value="Unknown">Unknown
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- /.form-group -->
-                <div class="form-group">
-                    <label class="control-label col-sm-3">Meal Preference</label>
-                    <div class="col-sm-9">
+                    <div class="col-sm-9 col-sm-offset-3">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" id="calorieCheckbox" value="Low calorie">Low calorie
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="saltCheckbox" value="Low salt">Low salt
+                                <input type="checkbox">I read <a href="#">terms and Conditions</a>
                             </label>
                         </div>
                     </div>
                 </div> <!-- /.form-group -->
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox">I accept <a href="#">terms</a>
-                            </label>
-                        </div>
-                    </div>
-                </div> <!-- /.form-group -->
-                <div class="form-group">
-                    <div class="col-sm-9 col-sm-offset-3">
-                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        <button type="submit" class="btn btn-primary btn-block" onClick="submitData();">Register</button>
                     </div>
                 </div>
-            </form> <!-- /form -->
+            </form:form> <!-- /form -->
         </div> <!-- ./container -->
 
 </body>
+
+<!-- <script type="text/javascript" >
+var firstName = $('#firstName').val(); 
+var lastName = $('#lastName').val(); 
+var json = {"firstName" : firstName,"lastName" : lastName}; 
+
+function submitData(){
+	$.ajax({ 
+	    url: "/user/register", 
+	    type: 'POST', 
+	    data: JSON.stringify(json),
+	    cache:false,
+        beforeSend: function(xhr) {  
+            xhr.setRequestHeader("Accept", "application/json");  
+            xhr.setRequestHeader("Content-Type", "application/json");  
+        },
+        success:function(response){
+            alert("Validation: "+response.validation+"   Name: "+response.name+"  Location: "+response.location);
+        },
+        error:function(jqXhr, textStatus, errorThrown){
+            alert(textStatus);
+        }
+	});
+	return true;
+}
+</script> -->
 </html>
